@@ -15,6 +15,17 @@ class XapTextDuplicate(unittest.TestCase):
         elem = driver.find_element_by_xpath("//input[1]")
         elem.send_keys("test text")
         assert elem.get_attribute('value') == "test text"
+        driver.find_element_by_xpath("/html/body/div/div[2]/div/div/div/div[2]/div[2]/button").click()
+
+
+    def test_text_duplication(self):
+        driver = self.driver
+        driver.get("https://labs.exaptive.city/xap/78c1ece0-c639-11e7-b984-d7a15f6dfbde?version=0.3.0")
+        time.sleep(5)
+        elem = driver.find_element_by_xpath("//input[1]")
+        elem.send_keys("test text")
+        elem_dup = driver.find_element_by_xpath("//input[2]")
+        assert elem.get_attribute('value') == elem_dup.get_attribute('value')
 
 
     def tearDown(self):
