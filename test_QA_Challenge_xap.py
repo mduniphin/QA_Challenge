@@ -23,11 +23,11 @@ class XapTextDuplicate(unittest.TestCase):
         time.sleep(5)
         elem = driver.find_element_by_xpath("//input[1]")
         elem.send_keys("test text")
-        elem_dup = driver.find_element_by_xpath("//input[2]")
-        assert elem.get_attribute('value') == elem_dup.get_attribute('value')
+        elem_Right = driver.find_element_by_xpath("//input[2]")
+        assert elem.get_attribute('value') == elem_Right.get_attribute('value')
 
 
-    def test_clear_button(self):
+    def test_clear_button_Left(self):
         driver = self.driver
         driver.get("https://labs.exaptive.city/xap/78c1ece0-c639-11e7-b984-d7a15f6dfbde?version=0.3.0")
         time.sleep(5)
@@ -36,6 +36,18 @@ class XapTextDuplicate(unittest.TestCase):
         assert elem.get_attribute('value') == "test text" 
         driver.find_element_by_xpath("//button").click()
         assert elem.get_attribute('value') == ""
+
+
+    def test_clear_button_Right(self):
+        driver = self.driver
+        driver.get("https://labs.exaptive.city/xap/78c1ece0-c639-11e7-b984-d7a15f6dfbde?version=0.3.0")
+        time.sleep(5)
+        elem = driver.find_element_by_xpath("//input[1]")
+        elem.send_keys("test text")
+        elem_Right = driver.find_element_by_xpath("//input[2]")
+        assert elem_Right.get_attribute('value') == "test text" 
+        driver.find_element_by_xpath("//button").click()
+        assert elem_Right.get_attribute('value') == ""
 
 
     def tearDown(self):
