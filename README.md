@@ -1,7 +1,3 @@
 # TODO
-1. Test clearing duplicate
-2. Create more tests
-3. Use Test Suite format
-4. ...
-5. Clean code principles
--should i use variables for xpaths?
+1. Figure out reliable expected condition before tests run
+2. Clean code principles

@@ -1,13 +1,16 @@
-import unittest
-import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+
+import unittest
+import time
+
 
 class XapTextMirror(unittest.TestCase):
 
     def setUp(self):
         self.driver = webdriver.Firefox()
-
+       
 
     #Tests text input in left textbox
     def test_text_input(self):
@@ -58,7 +61,7 @@ class XapTextMirror(unittest.TestCase):
         elem.send_keys(Keys.CONTROL, 'c')
         elem.send_keys(Keys.CONTROL, 'v')
         elem.send_keys(Keys.CONTROL, 'v')
-        time.sleep(2)
+        time.sleep(3)
         assert elem.get_attribute('value') == " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~ !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~" 
         assert elem_right.get_attribute('value') == " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~ !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~" 
 
@@ -72,7 +75,7 @@ class XapTextMirror(unittest.TestCase):
         elem_right = driver.find_element_by_xpath("//input[2]")
         elem_right.send_keys("test text")
         elem.send_keys("This should replace")
-        time.sleep(2)
+        time.sleep(3)
         assert elem.get_attribute('value') == elem_right.get_attribute('value')
 
 
@@ -108,4 +111,5 @@ class XapTextMirror(unittest.TestCase):
         self.driver.close()
 
 if __name__ == "__main__":
-    unittest.main()
+    suite = unittest.TestLoader().loadTestsFromTestCase(XapTextMirror)
+    unittest.TextTestRunner(verbosity=2).run(suite)
