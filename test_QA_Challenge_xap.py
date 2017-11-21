@@ -16,7 +16,7 @@ class XapTextMirror(unittest.TestCase):
     def test_text_input(self):
         driver = self.driver
         driver.get("https://labs.exaptive.city/xap/78c1ece0-c639-11e7-b984-d7a15f6dfbde?version=0.3.0")
-        time.sleep(5)
+        time.sleep(8)
         elem = driver.find_element_by_xpath("//input[1]")
         elem.send_keys("test text")
         assert elem.get_attribute('value') == "test text"
@@ -26,7 +26,7 @@ class XapTextMirror(unittest.TestCase):
     def test_text_duplication(self):
         driver = self.driver
         driver.get("https://labs.exaptive.city/xap/78c1ece0-c639-11e7-b984-d7a15f6dfbde?version=0.3.0")
-        time.sleep(5)
+        time.sleep(8)
         elem = driver.find_element_by_xpath("//input[1]")
         elem.send_keys("test text")
         elem_right = driver.find_element_by_xpath("//input[2]")
@@ -37,7 +37,7 @@ class XapTextMirror(unittest.TestCase):
     def test_text_duplication_backspace(self):
         driver = self.driver
         driver.get("https://labs.exaptive.city/xap/78c1ece0-c639-11e7-b984-d7a15f6dfbde?version=0.3.0")
-        time.sleep(5)
+        time.sleep(8)
         elem = driver.find_element_by_xpath("//input[1]")
         elem.send_keys("test text")
         elem_right = driver.find_element_by_xpath("//input[2]")
@@ -51,17 +51,18 @@ class XapTextMirror(unittest.TestCase):
     def test_copy_paste_duplication(self):
         driver = self.driver
         driver.get("https://labs.exaptive.city/xap/78c1ece0-c639-11e7-b984-d7a15f6dfbde?version=0.3.0")
-        time.sleep(5)
+        time.sleep(8)
         elem = driver.find_element_by_xpath("//input[1]")
         elem.send_keys(" !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~")
         elem_right = driver.find_element_by_xpath("//input[2]")
         assert elem.get_attribute('value') == " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~" 
+        time.sleep(3)
         assert elem_right.get_attribute('value') == " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~" 
         elem.send_keys(Keys.CONTROL, 'a')
         elem.send_keys(Keys.CONTROL, 'c')
         elem.send_keys(Keys.CONTROL, 'v')
         elem.send_keys(Keys.CONTROL, 'v')
-        time.sleep(3)
+        time.sleep(5)
         assert elem.get_attribute('value') == " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~ !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~" 
         assert elem_right.get_attribute('value') == " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~ !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~" 
 
@@ -70,7 +71,7 @@ class XapTextMirror(unittest.TestCase):
     def test_text_right_override(self):
         driver = self.driver
         driver.get("https://labs.exaptive.city/xap/78c1ece0-c639-11e7-b984-d7a15f6dfbde?version=0.3.0")
-        time.sleep(5)
+        time.sleep(8)
         elem = driver.find_element_by_xpath("//input[1]")
         elem_right = driver.find_element_by_xpath("//input[2]")
         elem_right.send_keys("test text")
@@ -83,7 +84,7 @@ class XapTextMirror(unittest.TestCase):
     def test_clear_button_left(self):
         driver = self.driver
         driver.get("https://labs.exaptive.city/xap/78c1ece0-c639-11e7-b984-d7a15f6dfbde?version=0.3.0")
-        time.sleep(5)
+        time.sleep(8)
         elem = driver.find_element_by_xpath("//input[1]")
         elem.send_keys("test text")
         assert elem.get_attribute('value') == "test text" 
@@ -95,7 +96,7 @@ class XapTextMirror(unittest.TestCase):
     def test_clear_button_right(self):
         driver = self.driver
         driver.get("https://labs.exaptive.city/xap/78c1ece0-c639-11e7-b984-d7a15f6dfbde?version=0.3.0")
-        time.sleep(5)
+        time.sleep(8)
         elem = driver.find_element_by_xpath("//input[1]")
         elem.send_keys("test text")
         elem_right = driver.find_element_by_xpath("//input[2]")
