@@ -98,6 +98,7 @@ class XapTextMirror(unittest.TestCase):
         time.sleep(8)
         elem = driver.find_element_by_xpath("//input[1]")
         elem.send_keys("test text")
+        time.sleep(3)
         elem_right = driver.find_element_by_xpath("//input[2]")
         assert elem_right.get_attribute('value') == "test text" 
         driver.find_element_by_xpath("//button").click()
