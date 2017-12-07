@@ -4,17 +4,18 @@ from selenium.webdriver.common.keys import Keys
 import unittest
 import time
 
+challengeSite = "https://labs.exaptive.city/xap/78c1ece0-c639-11e7-b984-d7a15f6dfbde?version=0.5.0" 
 
 class XapTextMirror(unittest.TestCase):
 
     def setUp(self):
         self.driver = webdriver.Firefox()
-       
+              
 
     #Tests text input in left textbox
     def test_text_input(self):
         driver = self.driver
-        driver.get("https://labs.exaptive.city/xap/78c1ece0-c639-11e7-b984-d7a15f6dfbde?version=0.5.0")
+        driver.get(challengeSite)
         time.sleep(8)
         elem = driver.find_element_by_xpath("//input[1]")
         elem.send_keys("test text")
@@ -24,7 +25,7 @@ class XapTextMirror(unittest.TestCase):
     #Tests mirroring of text input in left textbox to right textbox
     def test_text_duplication(self):
         driver = self.driver
-        driver.get("https://labs.exaptive.city/xap/78c1ece0-c639-11e7-b984-d7a15f6dfbde?version=0.5.0")
+        driver.get(challengeSite)
         time.sleep(8)
         elem = driver.find_element_by_xpath("//input[1]")
         elem.send_keys("test text")
@@ -36,7 +37,7 @@ class XapTextMirror(unittest.TestCase):
     #Tests mirroring of text input and backspace key in left textbox to right textbox  
     def test_text_duplication_backspace(self):
         driver = self.driver
-        driver.get("https://labs.exaptive.city/xap/78c1ece0-c639-11e7-b984-d7a15f6dfbde?version=0.5.0")
+        driver.get(challengeSite)
         time.sleep(8)
         elem = driver.find_element_by_xpath("//input[1]")
         elem.send_keys("test text")
@@ -50,7 +51,7 @@ class XapTextMirror(unittest.TestCase):
     #Confirms that Copy and Paste inputs in left textbox are mirrored to right textbox
     def test_copy_paste_duplication(self):
         driver = self.driver
-        driver.get("https://labs.exaptive.city/xap/78c1ece0-c639-11e7-b984-d7a15f6dfbde?version=0.5.0")
+        driver.get(challengeSite)
         time.sleep(8)
         elem = driver.find_element_by_xpath("//input[1]")
         elem.send_keys(" !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~")
@@ -70,7 +71,7 @@ class XapTextMirror(unittest.TestCase):
     #Confirms left to right textbox mirroring when the right textbox starts with text in it
     def test_text_right_override(self):
         driver = self.driver
-        driver.get("https://labs.exaptive.city/xap/78c1ece0-c639-11e7-b984-d7a15f6dfbde?version=0.5.0")
+        driver.get(challengeSite)
         time.sleep(8)
         elem = driver.find_element_by_xpath("//input[1]")
         elem_right = driver.find_element_by_xpath("//input[2]")
@@ -83,7 +84,7 @@ class XapTextMirror(unittest.TestCase):
     #Confirms that Clear button clears left textbox
     def test_clear_button_left(self):
         driver = self.driver
-        driver.get("https://labs.exaptive.city/xap/78c1ece0-c639-11e7-b984-d7a15f6dfbde?version=0.5.0")
+        driver.get(challengeSite)
         time.sleep(8)
         elem = driver.find_element_by_xpath("//input[1]")
         elem.send_keys("test text")
@@ -95,7 +96,7 @@ class XapTextMirror(unittest.TestCase):
     #Confirms that Clear button clears right textbox
     def test_clear_button_right(self):
         driver = self.driver
-        driver.get("https://labs.exaptive.city/xap/78c1ece0-c639-11e7-b984-d7a15f6dfbde?version=0.5.0")
+        driver.get(challengeSite)
         time.sleep(8)
         elem = driver.find_element_by_xpath("//input[1]")
         elem.send_keys("test text")
